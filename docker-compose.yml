@@ -16,10 +16,10 @@ services:
         restart: always
         command: --default-authentication-plugin=mysql_native_password --mysqlx=0
         environment:
-            MYSQL_DATABASE: eCommerce
-            MYSQL_USER: trung
-            MYSQL_PASSWORD: Miasanmia22@
-            MYSQL_ROOT_PASSWORD: Miasanmia1@
+            MYSQL_DATABASE: your_database
+            MYSQL_USER: your_user
+            MYSQL_PASSWORD: your_user_password
+            MYSQL_ROOT_PASSWORD: your_root_password
         volumes:
             - ".dbdata:/var/lib/mysql"
         ports:
