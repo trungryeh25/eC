@@ -28,3 +28,52 @@ _The website is designed for both customers and system administrators._
 
 _Details on how to run the application locally_
 ![Customer](https://github.com/trungryeh25/temp/blob/main/demo_eCommerce/readme/notAdmin.gif)
+
+### 2. System Administrator
+
+_System administrator accounts have full access to all permissions within the system. They can perform all features available to a regular customer account, while also having the ability to access the admin dashboard to manage and configure the system._
+
+#### Features available to an admin account that are similar to those of a customer account
+_Details on how to run the application locally_
+![Features available to an admin account that are similar to those of a customer account](https://github.com/trungryeh25/temp/blob/main/demo_eCommerce/readme/AdminWStore.gif)
+
+#### For the admin dashboard, the admin account can
+- Manage Users:
+
+  - View a list of all users (customers).
+  - Update or delete user accounts.
+  - View detailed user information, including order history and account status.
+- Manage Products:
+
+  - Add, edit, or delete products from the system.
+  - Manage product details such as name, description, price, images, and category.
+  - Update stock levels for products.
+- Manage Orders:
+
+  - View a list of all placed orders.
+  - Update order statuses (e.g., "processing", "shipped", "canceled").
+  - Manage order details, including products purchased and shipping information.
+- Manage Product Categories:
+
+  - Create, edit, or delete product categories.
+  - Categorize products into appropriate categories.
+- Manage Transactions and Payments:
+
+  - View details of customer payment transactions.
+  - Check payment status and handle any payment-related issues.
+- Manage Product Reviews and Comments:
+
+  - View, approve, or delete customer reviews and comments on products.
+- Manage Website Content:
+
+  - Edit website content (e.g., homepage, contact page, privacy policy, terms of service).
+  - Add, edit, or delete blog posts or announcements on the website.
+- View Reports and Analytics:
+
+  - View reports on revenue, order volume, customer numbers, and other site activities.
+- Manage System Settings:
+
+  - Update system settings such as payment methods, shipping methods, email configurations, and other administrative settings.
+  
+ _Details on how to run the application locally_
+![AdministrationManager](https://github.com/trungryeh25/temp/blob/main/demo_eCommerce/readme/AdministrationManager.gif)
