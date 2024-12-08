@@ -1,15 +1,12 @@
-Website for shopping
+# eCweb Store
+## I Introduction
+### The website is built for online sales, showcasing clothing items such as t-shirts, dress shirts, and polo shirts.
 
-This website is built with: Python, Django, HTML/CSS/JS, Bootstrap4, JQuery, MySQL and the project is running on Docker env.
 
-Frontend: HTML/CSS/JS, Bootstrap4, JQuery
 
-Backend: Python, Django and MySQL
-
-System Features:
-
-Admin
-
-- Login/Logout
-- All permission (create, insert, delete, deny, edit information.. ) with accounts in the systems
-- All permission (create, insert, delete, edit information.. ) with products and product variations in the systems.
+| STT | Cột 1 | Cột 2 |
+| :—– | :———- | :————– |
+| 1 | Dòng 11 | Dòng 21 |
+| 2 | Dòng 12 | Dòng 22 |
+| 3 | Dòng 13 | Dòng 23 |
+| 4 | Dòng 14 | Dòng 24 |
