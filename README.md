@@ -78,4 +78,4 @@ _Details on how to run the application locally_
  _Details on how to run the application locally_
 ![AdministrationManager](https://github.com/trungryeh25/temp/blob/main/demo_eCommerce/readme/AdministrationManager.gif)
 
-#### To read more details about the project, please visit the link to the report file [report_eCweb.pdf](report_eCweb.pdf).
+#### To read more details about the project, please visit the link to [the report file](report_eCweb.pdf).
