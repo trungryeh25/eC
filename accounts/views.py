@@ -66,23 +66,28 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
+        # Xác thực thông tin đăng nhập
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = auth.authenticate(email=email, password=password)
+        user = auth.authenticate(email=email, password=password) # Kết quả trả về là `user` hoặc `None`.
+
+        # Liên kết giỏ hàng khi đăng nhập thành công (Trường hợp hoạt động thêm, xóa sản phẩm ở giỏ hàng ở người dùng chưa thực hiện xác thực tài khoản và id giỏ hàng chỉ lưu ở session store của máy local trước đó. Và giờ họ tiến hàng đăng nhập).
         if user is not None:
             try:
                 cart = Cart.objects.get(cart_id=_cart_id(request))
-                cart_items = CartItem.objects.filter(cart=cart)
+                cart_items = CartItem.objects.filter(cart=cart) # Truy vấn tất cả các mục item trong giỏ hàng chưa liên kết với người dùng
+
+                # Xử lý sản phẩm trong giỏ hàng
                 if cart_items.exists():
                     product_variation = []
                     for cart_item in cart_items:
-                        variations = cart_item.variations.all()
+                        variations = cart_item.variations.all() # Lấy danh sách các thuộc tính (biến thể) của từng sản phẩm trong giỏ hàng.
                         product_variation.append(list(variations))
                         # cart_item.user = user
                         # cart_item.save()
-                    cart_items = CartItem.objects.filter(user=user)
-                    existing_variation_list = [list(item.variations.all()) for item in cart_items]
-                    id = [item.id for item in cart_items]
+                    cart_items = CartItem.objects.filter(user=user) # Lấy danh sách các sản phẩm trong giỏ hàng đã liên kết với tài khoản người dùng.
+                    existing_variation_list = [list(item.variations.all()) for item in cart_items] # Danh sách các biến thể của những sản phẩm đã liên kết
+                    id = [item.id for item in cart_items] # Danh sách ID của các sản phẩm
 
                     for product in product_variation:
                         if product in existing_variation_list:
