@@ -23,26 +23,30 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            # Lấy dữ liệu từ form và tạo tài khoản
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
             phone_number = form.cleaned_data['phone_number']
             password = form.cleaned_data['password']
-            username = email.split('@')[0]
+            username = email.split('@')[0] # Sử dụng phần trước dấu @ làm tên người dùng
 
             user = Account.objects.create_user(
                 first_name=first_name, last_name=last_name, email=email, username=username, password=password)
             user.phone_number = phone_number
             user.save()
 
+            # gửi email xác thực
             current_site = get_current_site(request=request)
             mail_subject = 'Activate your blog account.'
             message = render_to_string('accounts/active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': default_token_generator.make_token(user)
+                'user': user, # Là đối tượng người dùng  (từ model Account). Tham số này được truyền vào template để có thể sử dụng thông tin như tên người dùng, email, v.v
+                'domain': current_site.domain, # đây là tên miền của trang web hiện tại (lấy từ current.site.domain). Tham số này sẽ được sử dụng để tạo một liên kết đầy đủ mà người dùng có thể click vào để kích hoạt tài khoản.
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)), # Đây là ID của người dùng đã được mã hóa dưới dạng base64. `urlsafe_base64_code` chuyển đổi ID người dùng thành một chuỗi an toàn cho URL. force_bytes(user.pk) chuyển dổi ID của người dùng thành kiểu byte trước khi mã hóa.
+                'token': default_token_generator.make_token(user) # token: Đây là một mã xác thực được tạo ra thông qua `default_token_generator.make_token(user)`. Token này là duy nhất cho mỗi người dùng và sẽ được sử dụng để xác thực liên kết kích hoạt tài khoản.
             })
+
+            # Thông báo thành công và chuyển hướng đến trang đăng nhập
             send_email = EmailMessage(mail_subject, message, to=[email])
             send_email.send()
             messages.success(
